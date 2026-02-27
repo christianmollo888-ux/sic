@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date, Numeric, ForeignKey, Boolean, DateTime, Text
 from sqlalchemy.orm import relationship
-from .database import Base
+from database import Base
 import datetime
 
 class Taxpayer(Base):

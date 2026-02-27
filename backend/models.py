@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date, Numeric, ForeignKey, Text
 from sqlalchemy.orm import relationship
-from .database import Base
+from database import Base
 
 class Account(Base):
     __tablename__ = "accounts"
