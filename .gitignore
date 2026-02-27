@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+.env.local
+
+# SIC specifics
+db_info.json
+dbf/
+reportes/*.pdf
+xls/*.xlsx
+all_columns.txt
+analysis_output.txt
+er_output.txt
+legacy_analysis_dump.txt
+test.pdf
+text.pdf
+
+# Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
