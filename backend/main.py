@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, Response, UploadFile, File
 from sqlalchemy.orm import Session
-from . import models, schemas, crud, reports, models_forms
-from .database import engine, Base, get_db
+import models, schemas, crud, reports, models_forms
+from database import engine, Base, get_db
 from typing import List, Optional
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -277,7 +277,7 @@ async def process_form_pdf(file: UploadFile = File(...)):
     
     import tempfile
     import os
-    from .utils_pdf import extract_form_200_data
+    from utils_pdf import extract_form_200_data
     
     try:
         # Save temporary file
@@ -391,7 +391,7 @@ def get_resumen_200_excel(nit: str, year: int, db: Session = Depends(get_db)):
     if not report:
         raise HTTPException(status_code=404, detail="No se encontraron datos")
     
-    from . import reports
+    import reports
     content = reports.generate_resumen_formulario_200_excel(report)
     
     filename = f"Resumen_Formulario_200_{nit}_{year}.xlsx"
@@ -414,7 +414,7 @@ def get_tax_audit_report_excel(nit: str, year: int, db: Session = Depends(get_db
     if not report:
         raise HTTPException(status_code=404, detail="No se encontraron datos")
     
-    from . import reports
+    import reports
     content = reports.generate_tax_audit_excel(report)
     
     filename = f"Auditoria_Tributaria_{nit}_{year}.xlsx"
@@ -430,7 +430,7 @@ def get_tax_audit_report_pdf(nit: str, year: int, db: Session = Depends(get_db))
     if not report:
         raise HTTPException(status_code=404, detail="No se encontraron datos")
     
-    from . import reports
+    import reports
     content = reports.generate_tax_audit_pdf(report)
     
     filename = f"Auditoria_Tributaria_{nit}_{year}.pdf"
